@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  font-family: "cwTeXYen", sans-serif;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #4e4e4e;
+  border-collapse: collapse; /* 將兩條線崩塌成一條 */
+}
+
+td {
+  border-bottom: 1px solid #4e4e4e;
+  padding: 0.5%;
+}
+
+/*指表格中得第一對tr*/
+tr:nth-child(1) {
+  background-color: #7788aa;
+}
