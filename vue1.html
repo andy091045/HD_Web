@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 3.0 learning 1 </title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id = "app">
+    {{name}}
+</div>
+<div id = "app2">
+    {{name}}
+</div>
+<div id = "app3"></div>
+
+<script>
+    const {createApp , ref} = Vue;
+    const dataObj = {
+        name: '初始'
+    };
+    const vm1 = createApp({
+        data(){          
+            return {...dataObj}; //若沒加 ... (深拷貝)，則兩者會是相同物件會同步更改
+        }
+    }).mount('#app');
+
+    const vm2 = createApp({
+        data(){          
+            return {...dataObj};
+        }
+    }).mount('#app2');
+
+    const vm3 = createApp({
+        template: `<div>{{greeting}}，好棒棒</div>`,
+        data(){          
+            return {
+                greeting: '我是第三句話'
+            }
+        }
+    }).mount('#app3');
+
+    vm1.$data.name = '更改物';
+
+</script>
+</body>
+</html>
