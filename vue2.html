@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 3.0 learning 2</title>
+<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id = "app">
+        <p> 總金額共 {{ subtotal() }}</p>
+        <!-- ...中間略... -->
+        <p> 總金額共 {{ subtotal() }}</p>
+         <!-- ...中間略... -->
+        <p> 總金額共 {{ subtotal() }}</p>
+    </div>
+
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return{
+                    price: 100,
+                    quantity: 10
+                }
+            },
+            methods: {  //如果這邊用computed 上面的subtotal()變成subtotal
+                subtotal(){
+                    return this.price * this.quantity;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
