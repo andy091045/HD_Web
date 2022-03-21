@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue 3.0 learning 5</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h3>{{msg}}</h3>
+      <my-component v-bind:parent-msg="msg"></my-component>
+    </div>
+
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            msg: "這是外層元件的 msg",
+          };
+        },
+      });
+
+      app.component("my-component", {
+        template: `
+          <div class="component">
+          <div> 從 props 來的 parentMsg ==> {{ parentMsg }} </div>
+          <div> 自己的 msg ==> {{ msg }} </div>
+          </div>`,
+        props: { parentMsg: { type: [String] } },
+        data: () => {
+          return {
+            msg: "這是子元件的msg",
+          };
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>

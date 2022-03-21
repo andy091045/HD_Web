@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue 3.0 learning 6</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button v-for="tab in tabs" :key="tab" @click="currentTab = tab">
+        {{ tab }}
+      </button>
+
+      <tab-home v-if="currentTab === 'Home'"></tab-home>
+      <tab-posts v-if="currentTab === 'Posts'"></tab-posts>
+      <tab-archive v-if="currentTab === 'Archive'"></tab-archive>
+    </div>
+
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            currentTab: "Home",
+            tabs: ["Home", "Posts", "Archive"],
+          };
+        },
+      });
+
+      app.component("tab-home", {
+        template: `<div class="demo-tab">Home component</div>`,
+      });
+
+      app.component("tab-posts", {
+        template: `<div class="demo-tab">Post component</div>`,
+      });
+
+      app.component("tab-archive", {
+        template: `<div class="demo-tab">Archive component</div>`,
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
